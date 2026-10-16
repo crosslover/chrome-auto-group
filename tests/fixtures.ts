@@ -1,7 +1,7 @@
 import { test as base, chromium, type BrowserContext, type Worker } from '@playwright/test';
 import path from 'node:path';
 
-export const extensionPath = path.resolve('extension');
+export const extensionPath = path.resolve(process.env.EXTENSION_PATH || 'extension');
 
 export async function launchExtension(userDataDir = '', browserArgs: string[] = []) {
   const context = await chromium.launchPersistentContext(userDataDir, {

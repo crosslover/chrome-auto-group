@@ -27,4 +27,28 @@ pnpm test
 
 已分组网页跨站导航时，当前组标题若是网站识别规则可以产生的小写网站标识（包括未知域名主体），则自动换组。其他标题（如“工作资料”）保留用户安排。手动创建且标题恰好与网站标识相同的组也会按自动组处理；扩展不记录分组来源。
 
-发布包由后续票据完成。
+## 打包
+
+在仓库根目录执行（需要 Node.js 22+、pnpm 和系统 `zip` 命令；macOS 自带，Linux 可安装 `zip`）：
+
+```sh
+pnpm package
+```
+
+生成 `dist/chrome-auto-group-0.1.0.zip`，文件名中的版本号取自 `extension/manifest.json`。打包本身不下载依赖、不联网；每次重新生成 ZIP，只包含 manifest、后台脚本、弹窗 HTML/JS 和 16/32/48/128 像素 PNG 图标，不包含源码仓库、测试或开发依赖。
+
+ZIP 根目录直接包含 `manifest.json`，可由用户自行提交 Chrome Web Store。所有运行时代码和资源均在包内，无远程代码或网络服务依赖。版本更新时先递增 manifest 的 `version`，再重新打包。
+
+验证实际提交包（需要系统 `unzip`；使用全新的解压目录，避免残留旧文件）：
+
+```sh
+unzip -t dist/chrome-auto-group-0.1.0.zip
+unzip dist/chrome-auto-group-0.1.0.zip -d dist/unpacked
+EXTENSION_PATH=dist/unpacked pnpm test
+```
+
+也可在 `chrome://extensions` 中启用开发者模式，点击“加载已解压的扩展程序”，选择解压后的 `dist/unpacked/`，验证自动分组、跨站导航和工具栏整理功能。Chrome 不能直接以未打包模式加载 ZIP。
+
+`tabs` 用于读取标签页 URL，`tabGroups` 用于管理原生标签组，`storage` 仅用于上述 session 内存标记。商店填写权限用途时可据此说明。此命令仅生成扩展包；商店页面文字、截图等素材和开发者账号操作由用户另行准备，最终提交仍需经过商店审核。
+
+打包格式和图标要求参考 Chrome 官方的[提交前准备](https://developer.chrome.com/docs/webstore/prepare)及[manifest 图标](https://developer.chrome.com/docs/extensions/reference/manifest/icons)文档。

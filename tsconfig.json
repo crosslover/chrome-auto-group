@@ -9,5 +9,5 @@
     "noEmit": true,
     "types": ["node", "chrome"]
   },
-  "include": ["extension/**/*.js", "tests/**/*.ts", "playwright.config.ts"]
+  "include": ["extension/**/*.js", "scripts/**/*.mjs", "tests/**/*.ts", "playwright.config.ts"]
 }
