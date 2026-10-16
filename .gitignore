@@ -1,4 +1,6 @@
 .agents/skills
+.pnpm-store/
+.scratch/
 node_modules/
 test-results/
 playwright-report/
