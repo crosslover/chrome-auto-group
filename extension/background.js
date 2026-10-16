@@ -1,4 +1,29 @@
-const websiteNames = new Set(['google', 'bing', 'youtube']);
+// Match complete hostname labels; these are names, not domain-to-brand aliases.
+const websiteNames = new Set([
+  // International: search, media, communities, commerce, development, AI and work.
+  'google', 'bing', 'duckduckgo', 'yahoo', 'yandex',
+  'youtube', 'netflix', 'twitch', 'spotify', 'vimeo',
+  'facebook', 'instagram', 'threads', 'twitter', 'x', 'reddit', 'linkedin',
+  'discord', 'telegram', 'whatsapp', 'pinterest', 'quora',
+  'wikipedia', 'medium', 'substack', 'bbc', 'cnn', 'nytimes', 'reuters',
+  'amazon', 'ebay', 'etsy', 'paypal', 'stripe', 'airbnb', 'booking',
+  'microsoft', 'apple', 'github', 'gitlab', 'stackoverflow', 'stackexchange', 'leetcode',
+  'npmjs', 'pypi', 'docker', 'cloudflare', 'amazonaws', 'vercel', 'netlify',
+  'openai', 'chatgpt', 'anthropic', 'claude', 'perplexity', 'huggingface',
+  'notion', 'figma', 'canva', 'slack', 'zoom', 'dropbox', 'atlassian', 'office', 'outlook',
+
+  // China: search, communities, video, shopping, news, cloud, tools and services.
+  'baidu', 'sogou', 'so', '360', 'qq', 'tencent', 'weibo', 'zhihu', 'douban', 'xiaohongshu',
+  'bilibili', 'douyin', 'kuaishou', 'toutiao', 'ixigua', 'iqiyi', 'youku', 'mgtv', 'huya', 'douyu',
+  'taobao', 'tmall', 'jd', 'pinduoduo', 'yangkeduo', '1688', 'alibaba', 'alipay',
+  'meituan', 'dianping', 'eleme',
+  '163', '126', 'sina', 'sohu', 'ifeng', 'xinhuanet', 'people', 'cctv', 'thepaper',
+  'aliyun', 'huaweicloud', 'tencentcloud', 'volcengine',
+  'csdn', 'cnblogs', 'juejin', 'segmentfault', 'oschina', 'gitee', 'coding', 'nowcoder',
+  'feishu', 'dingtalk', 'yuque', 'kdocs', 'wps', 'shimo',
+  'deepseek', 'doubao', 'kimi', 'moonshot', 'minimax', 'bigmodel', 'zhipuai', 'qwen', 'tongyi',
+  'ctrip', 'qunar', '12306', 'amap', 'eastmoney', 'xueqiu', 'xiaomi', 'mi', 'huawei',
+]);
 
 // Deliberately small, bundled suffix table; no network updates or domain mappings.
 const multiLabelSuffixes = new Set([
