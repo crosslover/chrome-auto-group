@@ -4,6 +4,17 @@
   "description": "按网站标识自动整理新打开的网页标签页。",
   "version": "0.1.0",
   "minimum_chrome_version": "102",
-  "permissions": ["tabs", "tabGroups", "storage"],
-  "background": { "service_worker": "background.js", "type": "module" }
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "整理当前窗口",
+    "default_popup": "popup.html"
+  }
 }

@@ -57,7 +57,13 @@ export async function groupFor(worker: Worker, tabId: number) {
   return worker.evaluate(async id => {
     const tab = await chrome.tabs.get(id);
     if (tab.groupId === chrome.tabGroups.TAB_GROUP_ID_NONE) return null;
-    const group = await chrome.tabGroups.get(tab.groupId);
-    return { id: group.id, title: group.title, windowId: group.windowId };
+    try {
+      const group = await chrome.tabGroups.get(tab.groupId);
+      return { id: group.id, title: group.title, windowId: group.windowId };
+    } catch (error) {
+      // A navigation can move the last member and remove its old group between reads.
+      if (String(error).includes('No group with id:')) return null;
+      throw error;
+    }
   }, tabId);
 }
