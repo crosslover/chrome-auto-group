@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="自动标签页分组 Chrome 扩展的隐私政策：数据处理、权限用途、保留与删除方式。">
+  <title>隐私政策 · 自动标签页分组</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; font: 16px/1.8 system-ui, sans-serif; overflow-wrap: anywhere; }
+    h1 { font-size: 1.8rem; line-height: 1.4; }
+    h2 { margin-top: 2em; font-size: 1.2rem; }
+    a { color: #0969da; text-underline-offset: 3px; }
+    @media (prefers-color-scheme: dark) { a { color: #79b8ff; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>自动标签页分组：隐私政策</h1>
+    <p>生效及最后更新日期：<time datetime="2026-10-18">2026 年 10 月 18 日</time></p>
+    <p>本政策适用于由 crosslover 维护的“自动标签页分组”Chrome 扩展（产品 ID：nbnlaplcahglkbjpeakjnemkgdjgkpel），说明扩展如何访问、使用、保存及处理用户数据。</p>
+
+    <h2>1. 扩展用途与数据处理</h2>
+    <p>本扩展的单一用途是根据标签页当前访问的网站，将网页整理到对应的 Chrome 原生标签组中。它支持新建网页自动分组、网站标签组内跨站导航自动换组，以及用户主动整理当前窗口中尚未分组的网页。</p>
+    <p>为实现上述功能，扩展会在用户浏览器本地读取标签页当前或待加载的网址，从网址的主机名识别网站标识；同时使用标签页 ID、窗口 ID、标签组 ID、标签组名称及分组状态来完成分组操作。扩展不读取网页正文、表单内容、密码或 Cookie，也不调用浏览历史 API。</p>
+    <p>网址仅用于当前的本地分组处理。扩展不建立或保存网址列表、浏览历史或分组来源记录，不向开发者或第三方服务器上传上述数据。</p>
+
+    <h2>2. 权限用途</h2>
+    <ul>
+      <li><strong>tabs：</strong>读取标签页当前或待加载的网址以识别网站，并通过标签页 API 查询及整理标签页。</li>
+      <li><strong>tabGroups：</strong>查询和读取 Chrome 原生标签组信息，复用对应标签组、设置新建标签组名称，并判断跨站导航时是否需要换组。</li>
+      <li><strong>storage：</strong>仅使用 <code>chrome.storage.session</code> 在浏览器会话内存中临时保存等待首次普通网页地址的标签页 ID 和待处理标记，使后台服务休眠后仍能继续完成自动分组。</li>
+    </ul>
+
+    <h2>3. 数据保存与删除</h2>
+    <p>扩展保存的待处理标记只包含标签页 ID 和布尔标记，不包含网址、浏览历史、标签组 ID 或分组来源。这些标记仅驻留于浏览器会话内存，不使用本地磁盘存储或 Chrome 同步存储。</p>
+    <p>待处理标记会在标签页完成分组、被手动加入标签组或关闭时删除；浏览器重启或扩展停用、重新加载、卸载时，会话存储会清除。</p>
+    <p>扩展创建或修改的是 Chrome 原生标签组。标签组本身及其恢复行为由 Chrome 管理；卸载扩展不保证移除已经创建的标签组，用户可以通过 Chrome 的标签组菜单自行取消分组。</p>
+
+    <h2>4. 数据传输、共享与第三方服务</h2>
+    <p>扩展的分组功能在本地运行，不依赖网络服务，不向开发者或第三方服务器传输用户数据。我们不出售、出租或共享扩展处理的用户数据，不将其用于广告、分析追踪、信用评估或放贷。扩展不包含广告、分析 SDK 或远程执行代码，运行代码和网站识别规则均包含在安装包中。</p>
+    <p>本隐私政策网页由 GitHub Pages 托管。访问本网页时，GitHub 可能按照其自身政策处理访问请求信息；这与扩展在浏览器内执行分组的过程相互独立。详情请参阅 <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub 隐私声明</a>。</p>
+
+    <h2>5. 数据使用承诺</h2>
+    <p>本扩展通过 Chrome API 获取的信息仅用于本政策说明的标签页分组功能。我们对这些信息的使用遵守 Chrome Web Store 用户数据政策，包括 Limited Use（有限使用）要求。</p>
+
+    <h2>6. 用户选择与政策更新</h2>
+    <p>用户可以随时在 Chrome 扩展管理页面停用或卸载本扩展，停止后续数据访问和自动分组。本政策发生变化时，我们会更新本页面及最后更新日期；如数据处理方式发生变化，也会按适用的 Chrome Web Store 政策更新商店披露并提供必要通知。</p>
+
+    <h2>7. 联系方式</h2>
+    <p>如果您对本政策或扩展的数据处理方式有疑问，可以通过 <a href="https://github.com/crosslover/chrome-auto-group/issues">项目 GitHub Issues</a>联系维护者 crosslover。Issues 为公开渠道，请勿提交网址记录、密码或其他个人敏感信息。</p>
+  </main>
+</body>
+</html>
